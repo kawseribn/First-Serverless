@@ -1,15 +1,39 @@
 from http.server import BaseHTTPRequestHandler
-from cowpy import cow
 import json
-
+import random as rand
 class handler(BaseHTTPRequestHandler):
+    def name_gen(self,key):
+          key=key.lower()
+          if key=='male':
+            first_names ='male_first_names.txt'
+            last_names='last_names.txt'
+          elif key=='female':
+            first_names='female_first_names.txt'
+            last_names='last_names.txt'
 
+          f = open(str(first_names), "r")
+          first_names=f.read().split()
+          #print(first_names)
+          f = open(str(last_names), "r")
+          last_names=f.read().split()
+          #print(last_names)
+          length1=len(first_names)
+          length2=len(last_names)
+          first_index=rand.randint(0,length1)
+          last_index=rand.randint(0,length2)
+
+          name = first_names[first_index]+" "+last_names[last_index]
+          output= {key:name}
+          print(output)
+          json1=json.dumps(output,ensure_ascii=False)
+          #d = json.loads(json1)
+
+          return json1
     def do_GET(self):
-        self.output= {'male':'আবরেশমী শাহেদ'}
-        self.json1=json.dumps(output)
         self.send_response(200)
-        self.send_header('Content-type','text/plain')
+        self.send_header('Content-type','text/plain; charset=utf-8')
         self.end_headers()
-        message = json1
-        self.wfile.write(message.encode("utf-8"))
+        output= self.name_gen('male')
+        message=json.loads(message)
+        self.wfile.write(message['female'].encode('utf-8'))
         return
