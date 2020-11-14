@@ -33,7 +33,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type','text/plain; charset=utf-8')
         self.end_headers()
-        output= name_gen('male')
+        output= self.name_gen('male')
         message=json.loads(message)
         self.wfile.write(message['female'].encode('utf-8'))
         return
