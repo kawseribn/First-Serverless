@@ -8,7 +8,6 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type','text/plain')
         self.end_headers()
         output= {'female':'আবরেশমী শাহেদ'}
-        json1=json.dumps(output,ensure_ascii=False)
-        message = json.loads(json1)
-        self.wfile.write(message['female'].encode())
+        message=json.dumps(output,ensure_ascii=False)
+        self.wfile.write(message.encode())
         return
