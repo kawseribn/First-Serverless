@@ -5,11 +5,12 @@ import json
 class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
-        output= {'male':'আবরেশমী শাহেদ'}
+        output= {'female':'আবরেশমী শাহেদ'}
         json1=json.dumps(output)
         self.send_response(200)
         self.send_header('Content-type','text/plain')
         self.end_headers()
-        message = json1
-        self.wfile.write(message.encode("UTF-8"))
+        d = json.loads(json1)
+        message = d['female']
+        self.wfile.write(message.encode())
         return
