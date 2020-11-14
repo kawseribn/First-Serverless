@@ -1,5 +1,4 @@
 from http.server import BaseHTTPRequestHandler
-from cowpy import cow
 import json
 
 class handler(BaseHTTPRequestHandler):
@@ -11,5 +10,5 @@ class handler(BaseHTTPRequestHandler):
         output= {'female':'আবরেশমী শাহেদ'}
         json1=json.dumps(output)
         message = json.loads(json1)
-        self.wfile.write(message['female'].encode('utf-8'))
+        self.wfile.write(ensure_bytes(message['female']))
         return
