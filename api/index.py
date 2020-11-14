@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler
 import json
 import random as rand
 class handler(BaseHTTPRequestHandler):
-    def name_gen(key):
+    def name_gen(self,key):
           key=key.lower()
           if key=='male':
             first_names ='male_first_names.txt'
