@@ -9,6 +9,6 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         output= {'female':'কনিকা সাদিয়া'}
         message=json.dumps(output,ensure_ascii=False)
-        message=json.loads(message['female'])
-        self.wfile.write(message.encode('utf-8'))
+        message=json.loads(message)
+        self.wfile.write(message['female'].encode('utf-8'))
         return
