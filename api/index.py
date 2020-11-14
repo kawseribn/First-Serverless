@@ -29,8 +29,7 @@ class handler(BaseHTTPRequestHandler):
           #d = json.loads(json1)
 
           return json1
-
-    def do_GET(self):
+       def do_GET(self):
         self.send_response(200)
         self.send_header('Content-type','text/plain; charset=utf-8')
         self.end_headers()
