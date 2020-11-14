@@ -10,7 +10,6 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         output= {'female':'আবরেশমী শাহেদ'}
         json1=json.dumps(output)
-        d = json.loads(json1)
-        message = d['female']
-        self.wfile.write(message)
+        message = json.loads(json1)
+        self.wfile.write(message['female'])
         return
