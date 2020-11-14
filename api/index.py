@@ -12,5 +12,5 @@ class handler(BaseHTTPRequestHandler):
         json1=json.dumps(output)
         d = json.loads(json1)
         message = d['female']
-        self.wfile.write(message.encode())
+        self.wfile.write(message.encode("UTF-8"))
         return
