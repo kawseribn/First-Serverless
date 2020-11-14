@@ -11,5 +11,5 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type','text/plain')
         self.end_headers()
         message = json1
-        self.wfile.write(message.encode("utf-8"))
+        self.wfile.write(message.encode("UTF-8"))
         return
