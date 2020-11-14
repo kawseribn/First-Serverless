@@ -7,7 +7,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type','text/plain')
         self.end_headers()
-        output= {'female':'kawser'}
+        output= {'female':'কনিকা সাদিয়া'}
         message=json.dumps(output,ensure_ascii=False)
         self.wfile.write(message.encode())
         return
