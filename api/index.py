@@ -10,6 +10,6 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type','text/plain')
         self.end_headers()
-        import jsonwith open(self.json1) as f:  message = json.load(f)
+        message = json.load(self.json1)
         self.wfile.write(message.encode("utf-8"))
         return
