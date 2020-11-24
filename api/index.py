@@ -1,6 +1,7 @@
 from http.server import BaseHTTPRequestHandler
 import json
 import random as rand
+from re import search
 class handler(BaseHTTPRequestHandler):
     def name_gen(self,key):
       key=key.lower()
@@ -29,6 +30,14 @@ class handler(BaseHTTPRequestHandler):
       #d = json.loads(json1)
 
       return json1
+    def URL (a):
+        if "male" in a:
+            key = "male"
+        elif "female" in a:
+            key = "female"
+        else:
+            key = "male"
+        return key
     def do_GET(self):
         self.send_response(200)
         self.send_header('Content-type','text/plain; charset=utf-8')
