@@ -47,6 +47,8 @@ class handler(BaseHTTPRequestHandler):
         parsed_path = urlparse(self.path)
         print(parsed_path)
         print(self.__dict__)
+        print(self.path)
+        print(self.request)
         #url1=URL(self.__dict__['requestline'])
         output= self.name_gen('female')
         #json1=json.dumps(output,ensure_ascii=False)
