@@ -40,20 +40,11 @@ class handler(BaseHTTPRequestHandler):
             key = "male"
         return key
     def do_GET(self):
-        
         self.send_response(200)
         self.send_header('Content-type','text/plain; charset=utf-8')
         self.end_headers()
-        parsed_path = urlparse(self.path)
-        print(parsed_path)
-        
-        print(self.__dict__)
-        print(self.path)
-        print(self.request)
-        s=self.path
-        print (parse_qsl(s[2:]))
-        #url1=URL(self.__dict__['requestline'])
-        output= self.name_gen('female')
+        s=parse_qs(urlparse(s).query)['gender'][0]
+        output= self.name_gen(s)
         #json1=json.dumps(output,ensure_ascii=False)
         message=json.loads(output)
         self.wfile.write(message['female'].encode('utf-8'))
