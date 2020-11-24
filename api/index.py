@@ -44,7 +44,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type','text/plain; charset=utf-8')
         self.end_headers()
-        parsed_path = urlparse.urlparse(self.path)
+        parsed_path = urlparse(self.path)
         print(parsed_path)
         #url1=URL(self.__dict__['requestline'])
         output= self.name_gen('female')
