@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler
 import json
 import random as rand
 from re import search
-import urlparse
+from urllib.parse import urlparse
 class handler(BaseHTTPRequestHandler):
     def name_gen(self,key):
       key=key.lower()
