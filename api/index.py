@@ -50,6 +50,7 @@ class handler(BaseHTTPRequestHandler):
         print(self.__dict__)
         print(self.path)
         print(self.request)
+        s=self.path
         print (parse_qsl(s[2:]))
         #url1=URL(self.__dict__['requestline'])
         output= self.name_gen('female')
