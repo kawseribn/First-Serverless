@@ -2,7 +2,8 @@ from http.server import BaseHTTPRequestHandler
 import json
 import random as rand
 from re import search
-from urllib.parse import urlparse
+from urllib.parse import urlparse,parse_qs
+
 class handler(BaseHTTPRequestHandler):
     def name_gen(self,key):
       key=key.lower()
@@ -46,9 +47,11 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         parsed_path = urlparse(self.path)
         print(parsed_path)
+        
         print(self.__dict__)
         print(self.path)
         print(self.request)
+        print (parse_qs(s[2:]))
         #url1=URL(self.__dict__['requestline'])
         output= self.name_gen('female')
         #json1=json.dumps(output,ensure_ascii=False)
