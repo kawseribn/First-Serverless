@@ -5,33 +5,34 @@ from re import search
 from urllib.parse import urlparse, parse_qs
 
 class handler(BaseHTTPRequestHandler):
-    def name_gen(self,key):
-      key=key.lower()
-      if key=='male':
-        first_names ='api/male_first_names.txt'
-        last_names='api/last_names.txt'
-      elif key=='female':
-        first_names='api/female_first_names.txt'
-        last_names='api/last_names.txt'
+    def name_gen(self,key1):
+        for key in key1.values():
+          key=key.lower()
+          if key=='male':
+            first_names ='api/male_first_names.txt'
+            last_names='api/last_names.txt'
+          elif key=='female':
+            first_names='api/female_first_names.txt'
+            last_names='api/last_names.txt'
 
-      f = open(str(first_names), "r")
-      first_names=f.read().split()
-      #print(first_names)
-      f = open(str(last_names), "r")
-      last_names=f.read().split()
-      #print(last_names)
-      length1=len(first_names)
-      length2=len(last_names)
-      first_index=rand.randint(0,length1)
-      last_index=rand.randint(0,length2)
+          f = open(str(first_names), "r")
+          first_names=f.read().split()
+          #print(first_names)
+          f = open(str(last_names), "r")
+          last_names=f.read().split()
+          #print(last_names)
+          length1=len(first_names)
+          length2=len(last_names)
+          first_index=rand.randint(0,length1)
+          last_index=rand.randint(0,length2)
 
-      name = first_names[first_index]+" "+last_names[last_index]
-      output= {key:name}
-      print(output)
-      json1=json.dumps(output,ensure_ascii=False)
-      #d = json.loads(json1)
+          name = first_names[first_index]+" "+last_names[last_index]
+          output= {key:name}
+          print(output)
+          json1=json.dumps(output,ensure_ascii=False)
+          #d = json.loads(json1)
 
-      return json1
+          return json1
     def URL (a):
         if "male" in a:
             key = "male"
@@ -43,13 +44,13 @@ class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         print (self.path)
         s = self.path
-        print(parse_qs(urlparse(s).query))
+        gen = parse_qs(urlparse(s).query)
         print("-----------------")
         self.send_response(200)
         self.send_header('Content-type','text/plain; charset=utf-8')
         self.end_headers()
         #s=parse_qs(urlparse(s).query)['gender'][0]
-        output= self.name_gen("male")
+        output= self.name_gen(gen.keys())
         json1=json.dumps(output,ensure_ascii=False)
         message=json.loads(output)
         self.wfile.write(message['female'].encode('utf-8'))
