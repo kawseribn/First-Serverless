@@ -6,7 +6,7 @@ from urllib.parse import urlparse, parse_qs
 
 class handler(BaseHTTPRequestHandler):
     def name_gen(self,key1):
-        for key in key1.values():
+        for key in key1:
           key=key.lower()
           if key=='male':
             first_names ='api/male_first_names.txt'
