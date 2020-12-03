@@ -5,8 +5,7 @@ from re import search
 from urllib.parse import urlparse, parse_qs
 
 class handler(BaseHTTPRequestHandler):
-    def name_gen(self,key1):
-        for key in key1:
+    def name_gen(self,key):
           key=key.lower()
           if key=='male':
             first_names ='api/male_first_names.txt'
@@ -50,7 +49,9 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type','text/plain; charset=utf-8')
         self.end_headers()
         #s=parse_qs(urlparse(s).query)['gender'][0]
-        output= self.name_gen(gen.keys())
+        gen = list(gen)
+        gen=gen[0]
+        output= self.name_gen(gen)
         json1=json.dumps(output,ensure_ascii=False)
         message=json.loads(output)
         self.wfile.write(message['female'].encode('utf-8'))
