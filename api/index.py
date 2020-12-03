@@ -54,5 +54,5 @@ class handler(BaseHTTPRequestHandler):
         #gen=gen[0]
         output= self.name_gen("female")
         json1=json.dumps(output,ensure_ascii=False)
-        message=json.loads(output)
-        return self.wfile.write(message['female'].encode('utf-8'))
+        #message=json.loads(output)
+        return self.wfile.write(json1)
