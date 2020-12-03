@@ -27,7 +27,7 @@ class handler(BaseHTTPRequestHandler):
 
           name = first_names[first_index]+" "+last_names[last_index]
           output= {key:name}
-          print(output)
+          #print(output)
           json1=json.dumps(output,ensure_ascii=False)
           #d = json.loads(json1)
 
@@ -53,8 +53,8 @@ class handler(BaseHTTPRequestHandler):
         #gen = list(gen)
         #gen=gen[0]
         output= self.name_gen("female")
-        json1=json.dumps(output,ensure_ascii=False)
-        message=json.loads(json1)
+        #json1=json.dumps(output,ensure_ascii=False)
+        message=json.loads(output)
         #self.wfile.write(str(message).encode('utf8'))
-        self.wfile.write(message)
+        self.wfile.write(message.encode("utf8))
         return
