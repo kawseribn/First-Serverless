@@ -48,7 +48,7 @@ class handler(BaseHTTPRequestHandler):
         #print("-----------------")
         self.send_response(200)
         self.send_header('Content-type','application/json; charset=utf-8')
-        self.send_header("Access-Control-Allow-Origin: http://localhost")
+        self.send_header("Access-Control-Allow-Origin", "http://localhost")
         self.end_headers()
         #s=parse_qs(urlparse(s).query)['gender'][0]
         #gen = list(gen)
