@@ -32,18 +32,18 @@ class handler(BaseHTTPRequestHandler):
           #d = json.loads(json1)
 
           return json1
-    def URL (a):
+    '''def URL (a):
         if "male" in a:
             key = "male"
         elif "female" in a:
             key = "female"
         else:
             key = "male"
-        return key
+        return key'''
     def do_GET(self):
         #print (self.path)
-        #s = self.path
-        #gen = parse_qs(urlparse(s).query)
+        s = self.path
+        gen = parse_qs(urlparse(s).query)['gender'][0]
         #print(gen, type(gen))
         #print("-----------------")
         self.send_response(200)
@@ -52,7 +52,7 @@ class handler(BaseHTTPRequestHandler):
         #s=parse_qs(urlparse(s).query)['gender'][0]
         #gen = list(gen)
         #gen=gen[0]
-        output= self.name_gen("female")
+        output= self.name_gen(gen)
         json1=json.dumps(output,ensure_ascii=False)
         message=json.loads(json1)
         self.wfile.write(message.encode('utf8'))
