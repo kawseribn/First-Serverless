@@ -52,7 +52,7 @@ class handler(BaseHTTPRequestHandler):
         #s=parse_qs(urlparse(s).query)['gender'][0]
         #gen = list(gen)
         #gen=gen[0]
-        output= self.name_gen(gen)
+        output= self.name_gen("female")
         json1=json.dumps(output,ensure_ascii=False)
         message=json.loads(json1)
         self.wfile.write(message.encode('utf8'))
