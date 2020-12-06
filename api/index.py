@@ -47,7 +47,7 @@ class handler(BaseHTTPRequestHandler):
         print(gen, type(gen))
         #print("-----------------")
         self.send_response(200)
-        self.send_header('Content-type','text/plain; charset=utf-8')
+        self.send_header('Content-type','application/json; charset=utf-8')
         self.end_headers()
         #s=parse_qs(urlparse(s).query)['gender'][0]
         #gen = list(gen)
